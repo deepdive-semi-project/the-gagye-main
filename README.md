@@ -12,6 +12,7 @@
 
 - python -m pip install Django
 - pip install mysql-connector-python
+- 루트 경로에 env 파일을 생성하고 DB 정보를 입력합니다.
 
 ### 개발 서버 실행
 
