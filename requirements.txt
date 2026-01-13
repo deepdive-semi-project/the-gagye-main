@@ -1,0 +1,14 @@
+Django==5.2.10
+
+# 운영용 WSGI 서버 (Dockerfile에서 사용)
+gunicorn>=21.2.0
+
+# MySQL 데이터베이스 커넥터
+mysql-connector-python==9.5.0
+
+# 환경변수 관리
+python-dotenv==1.2.1
+
+python-dateutil
+
+whitenoise

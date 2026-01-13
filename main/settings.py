@@ -25,6 +25,18 @@ DATABASE_NAME = os.getenv("DATABASE_NAME")
 DATABASE_USER = os.getenv("DATABASE_USER")
 DATABASE_PASSWORD = os.getenv("DATABASE_PASSWORD")
 
+# 배포를 위해 파일이 모일 위치 정의
+# 웹 브라우저에서 접근할 때 사용하는 URL 경로
+STATIC_URL = 'static/'
+
+# 개발 중에 참고할 정적 파일들이 있는 경로 (추가 폴더가 있을 경우)
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
+
+# collectstatic 명령 실행 시 파일이 복사되는 절대 경로 (운영 서버용)
+STATIC_ROOT = BASE_DIR / 'staticfiles'
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/6.0/howto/deployment/checklist/
 
@@ -34,7 +46,7 @@ SECRET_KEY = 'django-insecure-+e)z-eo&agu*kquf^h9&41ih50+^_5dqt8i1r^!o-30kl#s@xf
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -51,6 +63,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -58,6 +71,9 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     #'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# 배포를 위한 압축 및 캐싱 설정 (선택 사항이지만 강력 추천)
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ROOT_URLCONF = 'main.urls'
 
