@@ -61,7 +61,10 @@
 
         <div class="days-grid" id="daysGrid"></div>
       </div>
-      <div class="selected-date-display" id="selectedDateDisplay"></div>
+      <div class="selected-date-display" id="selectedDateDisplay">
+        <div class="list-item">
+          <span class="label">달력에서 날짜를 선택해주세요.</span>
+      </div>
     </div>
 
     <script>
@@ -203,7 +206,7 @@
 
         updateSelectedDateDisplay(data) {
           if (!this.selectedDate) {
-            this.selectedDateDisplay.classList.remove("show");
+            // this.selectedDateDisplay.classList.remove("show");
             return;
           }
 
@@ -213,7 +216,7 @@
             day: "numeric",
             weekday: "long",
           };
-          this.selectedDateDisplay.classList.add("show");
+          // this.selectedDateDisplay.classList.add("show");
 
           //-----------------------------------------------
           // 수입/지출 데이터 추가
@@ -235,6 +238,13 @@
 
             selectedDateDisplay.appendChild(div);
           });
+
+          if (data.length === 0) {
+            var div = document.createElement("div");
+            div.className = "list-item";
+            div.innerHTML = `<span class="label">선택한 날짜의 수입 / 지출 내역이 없습니다.</span>`;
+            selectedDateDisplay.appendChild(div);
+          }
         }
 
         getExpenseDataByDay() {

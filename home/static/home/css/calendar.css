@@ -197,7 +197,6 @@ body {
   background: white;
   border-radius: 8px;
   box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-  display: none;
 }
 
 .selected-date-display.show {
@@ -237,7 +236,7 @@ body {
 
 @media (min-width: 1000px) {
   .container {
-    max-width: 900px;
+    max-width: 95%;
   }
   .calendar {
     float: left;
@@ -247,5 +246,9 @@ body {
   .selected-date-display {
     float: right;
     width: 40%;
+  }
+
+  .day-text {
+    font-size: 12px;
   }
 }
